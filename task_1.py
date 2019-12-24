@@ -1,28 +1,44 @@
 '''
         Task 1
 
-    Реализовать функцию, принимающую
-    два числа (позиционные аргументы)
-    и выполняющую их деление. Числа
-    запрашивать у пользователя,
-    предусмотреть обработку ситуации
-    деления на ноль.
+    Создать класс TrafficLight (светофор) и определить
+    у него один атрибут color (цвет) и метод running
+    (запуск). Атрибут реализовать как приватный.
+    В рамках метода реализовать переключение светофора
+    в режимы: красный, желтый, зеленый.
+    Продолжительность первого состояния (красный) составляет
+    7 секунд, второго (желтый) — 2 секунды,
+    третьего (зеленый) — на ваше усмотрение.
+    Переключение между режимами должно осуществляться
+    только в указанном порядке (красный, желтый, зеленый).
+    Проверить работу примера, создав экземпляр и вызвав описанный метод.
 
 '''
 
+import time, random
 
-def division(a, b):
-    try:
-        global divis
-        divis = a / b
+class TrafficLight:
 
-    except (ZeroDivisionError, NameError):
-        print("Нельзя делить на ноль :(")
-        print("Введите корректные числа")
+    color = 'red'
 
-    return divis
+    def Running(self):
 
-a = int(input("Введите первое число: "))
-b = int(input("Введите второе число: "))
+        print(TrafficLight.color)
+        time.sleep(7)
 
-print(division(a, b))
+        TrafficLight.color = 'yellow'
+        print(TrafficLight.color)
+        time.sleep(2)
+
+        TrafficLight.color = 'green'
+        print(TrafficLight.color)
+        time.sleep(random.randint(5, 8))
+
+        TrafficLight.color = 'yellow'
+        print(TrafficLight.color)
+        time.sleep(2)
+
+        TrafficLight.color = 'red'
+        print(TrafficLight.color)
+
+TrafficLight().Running()
